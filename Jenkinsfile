@@ -10,7 +10,7 @@ node('master')
     }
     stage('ContinuousDeployment_Main')
     {
-    sh 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war ubuntu@172.31.30.223:/var/lib/tomcat9/webapps/testapp.war'
+ deploy adapters: [tomcat9(credentialsId: 'f246e795-097e-4148-9dfe-e8c76c27e948', path: '', url: 'http://172.31.30.223:8080')], contextPath: 'testapp', war: '**/*.war'
 
     }
 
